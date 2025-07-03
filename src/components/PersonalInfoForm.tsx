@@ -15,6 +15,7 @@ import React, { useState } from "react";
 const PersonalInfoForm: React.FC = () => {
   const [showOldPassword, setShowOldPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showTimezoneTooltip, setShowTimezoneTooltip] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "Clara",
     lastName: "Smith",
@@ -47,9 +48,9 @@ const PersonalInfoForm: React.FC = () => {
     countries.find((c) => c.name === formData.country) || countries[0];
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
+    <div className="w-full p-0">
       {/* Header */}
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex items-center justify-between mb-8 px-6 pt-6">
         <div>
           <h2 className="text-xl font-semibold text-gray-900 mb-1">
             Personal info
@@ -68,7 +69,7 @@ const PersonalInfoForm: React.FC = () => {
         </div>
       </div>
 
-      <div className="space-y-8">
+      <div className="space-y-8 px-6">
         {/* Name */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
@@ -96,6 +97,9 @@ const PersonalInfoForm: React.FC = () => {
             />
           </div>
         </div>
+
+        {/* Divider */}
+        <hr className="border-t border-gray-200 w-full -mx-6" />
 
         {/* Email */}
         <div>
@@ -132,6 +136,9 @@ const PersonalInfoForm: React.FC = () => {
           </div>
         </div>
 
+        {/* Divider */}
+        <hr className="border-t border-gray-200 w-full -mx-6" />
+
         {/* Photo Upload */}
         <div className="flex gap-6 items-start">
           {/* Left side - Text section */}
@@ -153,25 +160,27 @@ const PersonalInfoForm: React.FC = () => {
             <div className="w-16 h-16 bg-gray-200 rounded-full flex-shrink-0"></div>
 
             {/* Upload drop zone */}
-            <div className="flex-1 border-2 border-green-500 border-solid rounded-lg p-6 text-center bg-white hover:bg-green-50 transition-colors cursor-pointer">
+            <div className="flex-1 border-2 border-green-500 border-solid rounded-lg p-6 text-center bg-white hover:bg-gray-50 transition-colors cursor-pointer">
               <div className="flex flex-col items-center">
-                <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center mb-3">
+                <div className="w-10 h-10 bg-gray-200 rounded-md flex items-center justify-center mb-3">
                   <Upload className="w-5 h-5 text-gray-600" />
                 </div>
-                <p className="text-sm text-green-600 mb-1">
-                  <span className="font-medium">Click to upload</span> or drag
-                  and drop
+                <p className="text-sm text-gray-600 mb-1">
+                  <span className="font-medium text-green-600">
+                    Click to upload
+                  </span>{" "}
+                  or drag and drop
                 </p>
-                <p className="text-xs text-gray-500 mb-3">
-                  SVG, PNG, JPG or GIF (max. 800x400px)
+                <p className="text-xs text-gray-500">
+                  SVG, PNG, JPG or GIF (max. 800×400px)
                 </p>
-                <div className="bg-green-100 text-green-700 text-xs px-2 py-1 rounded border border-green-200">
-                  JPG
-                </div>
               </div>
             </div>
           </div>
         </div>
+
+        {/* Divider */}
+        <hr className="border-t border-gray-200 w-full -mx-6" />
 
         {/* Change Password */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -256,6 +265,9 @@ const PersonalInfoForm: React.FC = () => {
           </div>
         </div>
 
+        {/* Divider */}
+        <hr className="border-t border-gray-200 w-full -mx-6" />
+
         {/* Role */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -265,17 +277,20 @@ const PersonalInfoForm: React.FC = () => {
             type="text"
             value={formData.role}
             readOnly
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 text-gray-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent pr-10"
           />
           <p className="text-sm text-gray-600 mt-1">
             Please note the role can be changed through{" "}
             <strong>Settings→Team→Edit Roles</strong>,{" "}
-            <button className="text-green-600 hover:text-green-800">
+            <button className="text-gray-800 hover:text-green-800">
               click here
             </button>{" "}
             to change the role.
           </p>
         </div>
+
+        {/* Divider */}
+        <hr className="border-t border-gray-200 w-full -mx-6" />
 
         {/* Country */}
         <div>
@@ -297,6 +312,9 @@ const PersonalInfoForm: React.FC = () => {
             <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
           </div>
         </div>
+
+        {/* Divider */}
+        <hr className="border-t border-gray-200 w-full -mx-6" />
 
         {/* Mobile Number */}
         <div>
@@ -322,16 +340,35 @@ const PersonalInfoForm: React.FC = () => {
               Verify
             </button>
           </div>
-          <div className="mt-2 bg-gray-900 text-white text-xs px-3 py-2 rounded-lg">
-            Please enter your current timezone
-          </div>
         </div>
+
+        {/* Divider */}
+        <hr className="border-t border-gray-200 w-full -mx-6" />
 
         {/* Timezone */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Timezone
-          </label>
+          <div className="flex items-center mb-2">
+            <label className="block text-sm font-medium text-gray-700">
+              Timezone <span className="text-green-500">*</span>
+            </label>
+            <div className="relative ml-2">
+              <button
+                onMouseEnter={() => setShowTimezoneTooltip(true)}
+                onMouseLeave={() => setShowTimezoneTooltip(false)}
+                className="text-gray-400 hover:text-gray-600"
+              >
+                <HelpCircle className="w-4 h-4" />
+              </button>
+              {showTimezoneTooltip && (
+                <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 z-10">
+                  <div className="bg-gray-900 text-white text-xs px-3 py-2 rounded-lg whitespace-nowrap">
+                    Please enter your current timezone
+                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900"></div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <svg
@@ -369,6 +406,9 @@ const PersonalInfoForm: React.FC = () => {
             <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
           </div>
         </div>
+
+        {/* Divider */}
+        <hr className="border-t border-gray-200 w-full -mx-6" />
 
         {/* Bio */}
         <div>
@@ -423,7 +463,7 @@ const PersonalInfoForm: React.FC = () => {
         </div>
 
         {/* Bottom Actions */}
-        <div className="flex justify-end space-x-3 pt-6 border-t border-gray-200">
+        <div className="flex justify-end space-x-3 pt-6 border-t border-gray-200 -mx-6 px-6">
           <button className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-green-500">
             Cancel
           </button>

@@ -1,6 +1,6 @@
 import {
   BarChart3,
-  ChevronsDownUp as ChevronUpDown,
+  ChevronsUpDown,
   FileText,
   HelpCircle,
   Package,
@@ -151,7 +151,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isMobileOpen, onMobileClose }) => {
               </div>
             </div>
             <div className="flex items-center bg-gray-100 justify-center border border-gray-100 rounded-md px-1 py-1 flex-shrink-0">
-              <ChevronUpDown className="w-4 h-4 text-gray-400" />
+              <ChevronsUpDown className="w-4 h-4 text-gray-400" />
             </div>
           </div>
         </div>
