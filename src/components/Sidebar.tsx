@@ -137,9 +137,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isMobileOpen, onMobileClose }) => {
           {/* User Profile */}
           <div className="flex items-center p-2 rounded-lg hover:bg-gray-50 cursor-pointer">
             <div className="relative mr-3 flex-shrink-0">
-              <div className="w-9 h-9 bg-white rounded-full border border-gray-300 flex items-center justify-center text-gray-600 text-xs font-semibold">
-                CS
-              </div>
+              <div className="w-9 h-9 bg-white rounded-full border border-gray-300 flex items-center justify-center text-gray-600 text-xs font-semibold"></div>
               <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></div>
             </div>
             <div className="flex-1 min-w-0">
