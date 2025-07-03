@@ -1,6 +1,5 @@
 import {
   Bold,
-  
   ChevronDown,
   Eye,
   EyeOff,
